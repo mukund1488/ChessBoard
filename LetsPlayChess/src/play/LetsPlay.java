@@ -1,4 +1,7 @@
-package chessboard;
+package play;
+
+import exception.ChessBoardException;
+import factory.ChessPieceFactory;
 
 /*
  * EntryPoint to chess board application
@@ -8,7 +11,15 @@ package chessboard;
  * in input
  */
 public class LetsPlay {
+	String[][] chessBoard;
+
 	public static void main(String[] args) {
+
+		try {
+			ChessPieceFactory.getChessPiece(args[0]);
+		} catch (ChessBoardException e) {
+			System.out.println("Invalid input provided, please provide proper input");
+		}
 
 	}
 
