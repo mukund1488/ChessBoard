@@ -1,10 +1,15 @@
-package chessboard;
+package factory;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
+import chessboard.Bishop;
+import chessboard.King;
+import chessboard.Pawn;
+import chessboard.Queen;
+import chessboard.Rook;
 import exception.ChessBoardException;
 import factory.ChessPieceFactory;
 

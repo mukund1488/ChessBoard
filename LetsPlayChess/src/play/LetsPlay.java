@@ -1,5 +1,6 @@
 package play;
 
+import chessboard.ChessPiece;
 import exception.ChessBoardException;
 import factory.ChessPieceFactory;
 
@@ -11,12 +12,14 @@ import factory.ChessPieceFactory;
  * in input
  */
 public class LetsPlay {
-	String[][] chessBoard;
 
 	public static void main(String[] args) {
 
 		try {
-			ChessPieceFactory.getChessPiece(args[0]);
+			ChessPiece chessPiece = ChessPieceFactory.getChessPiece(args[0]);
+			String possibleMoves = chessPiece.possibleMovesAvailable(args[1]);
+			System.out.println(
+					"Possible moves for" + args[0] + " with current position" + args[1] + "are: " + possibleMoves);
 		} catch (ChessBoardException e) {
 			System.out.println("Invalid input provided, please provide proper input");
 		}

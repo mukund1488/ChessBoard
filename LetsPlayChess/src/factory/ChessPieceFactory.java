@@ -1,7 +1,7 @@
 package factory;
 
 import chessboard.Bishop;
-import chessboard.ChessPieces;
+import chessboard.ChessPiece;
 import chessboard.Horse;
 import chessboard.King;
 import chessboard.Pawn;
@@ -9,9 +9,22 @@ import chessboard.Queen;
 import chessboard.Rook;
 import exception.ChessBoardException;
 
+/**
+ * Factory class to generate Chess tpe based on input
+ *
+ * @author Mukund1488
+ *
+ */
 public class ChessPieceFactory {
 
-	public static ChessPieces getChessPiece(String pieceName) throws ChessBoardException {
+	/**
+	 * Method to retrieve Chess Piece Type
+	 * 
+	 * @param pieceName
+	 * @return ChessPiece as per the input
+	 * @throws ChessBoardException incase of invalid input
+	 */
+	public static ChessPiece getChessPiece(String pieceName) throws ChessBoardException {
 		switch (pieceName.toLowerCase()) {
 		case "king":
 			return new King();

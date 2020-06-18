@@ -1,9 +1,9 @@
 package chessboard;
 
-public class Horse extends ChessPieces {
+public class Horse extends ChessPiece {
 
 	@Override
-	public String move(String currentPosition) {
+	public String possibleMovesAvailable(String currentPosition) {
 		// TODO Auto-generated method stub
 		return null;
 
