@@ -9,7 +9,6 @@ public class King extends ChessPiece {
 
 		int inputColPosition = Integer.valueOf(currentPosition.substring(1)) - 1;
 		int inputRowPosition = retrieveRowPositionFromInput(currentPosition);
-		new StringBuilder();
 		int startingPositionForRow = retrieveStartingPosition(inputRowPosition);
 		int endingPositionForRow = extractEndingPosition(inputRowPosition);
 		int startingPositionForCol = retrieveStartingPosition(inputColPosition);
