@@ -11,10 +11,12 @@ public class King extends ChessPiece {
 		try {
 			int inputColPosition = retrieveColPositionFromInput(currentPosition);
 			int inputRowPosition = retrieveRowPositionFromInput(currentPosition);
-			int startingPositionForRow = retrieveStartingPosition(inputRowPosition);
+
+			int startingPositionForRow = extractStartingPosition(inputRowPosition);
 			int endingPositionForRow = extractEndingPosition(inputRowPosition);
-			int startingPositionForCol = retrieveStartingPosition(inputColPosition);
+			int startingPositionForCol = extractStartingPosition(inputColPosition);
 			int endingPositionForCol = extractEndingPosition(inputColPosition);
+			
 			StringJoiner possibleMoves = new StringJoiner(",");
 			for (int i = startingPositionForRow; i <= endingPositionForRow; i++) {
 				for (int j = startingPositionForCol; j <= endingPositionForCol; j++) {
@@ -32,11 +34,11 @@ public class King extends ChessPiece {
 
 	}
 
-	private int extractEndingPosition(int startPosition) {
-		return (startPosition != 7) ? startPosition + 1 : startPosition;
+	private int extractEndingPosition(int currentPosition) {
+		return (currentPosition != 7) ? currentPosition + 1 : currentPosition;
 	}
 
-	private int retrieveStartingPosition(int endingPosition) {
-		return (endingPosition != 0) ? endingPosition - 1 : 0;
+	private int extractStartingPosition(int currentPosition) {
+		return (currentPosition != 0) ? currentPosition - 1 : 0;
 	}
 }
