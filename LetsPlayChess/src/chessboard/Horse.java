@@ -12,7 +12,7 @@ public class Horse extends ChessPiece {
 			int inputColPosition = retrieveColPositionFromInput(currentPosition);
 			int inputRowPosition = retrieveRowPositionFromInput(currentPosition);
 			StringJoiner possibleMoves = new StringJoiner(",");
-			
+
 			if (inputColPosition - 2 >= 0) {
 				possibleMoves.add(moveLeft(inputRowPosition, inputColPosition));
 			}
@@ -36,11 +36,14 @@ public class Horse extends ChessPiece {
 		// Can move only 2 steps left and then down
 		if (rowPosition == 0) {
 			return chessBoard[rowPosition - 1][colPosition - 2];
-		} else {
-			// 2 steps left and one step Up and Down both are allowed
-			return chessBoard[rowPosition - 1][colPosition - 2] + "," + chessBoard[rowPosition + 1][colPosition - 2];
-
 		}
+		if (rowPosition == 7) {
+			// Can move only 2 steps left and then up
+			return chessBoard[rowPosition - 1][colPosition - 2];
+		}
+
+		// 2 steps left and one step Up and Down both are allowed
+		return chessBoard[rowPosition - 1][colPosition - 2] + "," + chessBoard[rowPosition + 1][colPosition - 2];
 
 	}
 
@@ -48,6 +51,10 @@ public class Horse extends ChessPiece {
 		// Can move only 2 steps right and then down
 		if (rowPosition == 0) {
 			return chessBoard[rowPosition + 1][colPosition + 2];
+		}
+		if (rowPosition == 7) {
+			// Can move only 2 steps right and then up
+			return chessBoard[rowPosition - 1][colPosition + 2];
 		}
 		// 2 steps Right and one step Up and Down both are allowed
 		return chessBoard[rowPosition + 1][colPosition + 2] + "," + chessBoard[rowPosition - 1][colPosition + 2];

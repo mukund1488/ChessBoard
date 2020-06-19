@@ -22,4 +22,10 @@ public class HorseTest {
 		assertEquals("B3,C2", possibleMoves);
 	}
 
+	@Test
+	public void testPossibleMovesForHorseForBorderScenario() throws ChessBoardException {
+		String possibleMoves = horse.possibleMovesAvailable("H1");
+		assertEquals("G3,F2", possibleMoves);
+	}
+
 }
