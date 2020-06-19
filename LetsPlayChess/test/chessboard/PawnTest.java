@@ -1,6 +1,6 @@
 package chessboard;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -11,14 +11,14 @@ public class PawnTest {
 	private Pawn pawn = new Pawn();
 
 	@Test
-	public void testPossibleMovesForKingForProperInput() throws ChessBoardException {
+	public void testPossibleMovesForPawnForProperInput() throws ChessBoardException {
 		String possibleMoves = pawn.possibleMovesAvailable("D5");
 		assertEquals("E5", possibleMoves);
 
 	}
 
 	@Test
-	public void testPossibleMovesForKingForBorderConditionOfRow() throws ChessBoardException {
+	public void testPossibleMovesForPawnForBorderConditionOfRow() throws ChessBoardException {
 		String possibleMoves = pawn.possibleMovesAvailable("H5");
 		assertEquals("No Possible Move Left for Pawn", possibleMoves);
 
