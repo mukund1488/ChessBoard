@@ -2,28 +2,33 @@ package chessboard;
 
 import java.util.StringJoiner;
 
+import exception.ChessBoardException;
+
 public class King extends ChessPiece {
 
 	@Override
-	public String possibleMovesAvailable(String currentPosition) {
-
-		int inputColPosition = Integer.valueOf(currentPosition.substring(1)) - 1;
-		int inputRowPosition = retrieveRowPositionFromInput(currentPosition);
-		int startingPositionForRow = retrieveStartingPosition(inputRowPosition);
-		int endingPositionForRow = extractEndingPosition(inputRowPosition);
-		int startingPositionForCol = retrieveStartingPosition(inputColPosition);
-		int endingPositionForCol = extractEndingPosition(inputColPosition);
-		StringJoiner possibleMoves = new StringJoiner(",");
-		for (int i = startingPositionForRow; i <= endingPositionForRow; i++) {
-			for (int j = startingPositionForCol; j <= endingPositionForCol; j++) {
-				if (i == inputRowPosition && j == inputColPosition) {
-					continue;
+	public String possibleMovesAvailable(String currentPosition) throws ChessBoardException {
+		try {
+			int inputColPosition = retrieveColPositionFromInput(currentPosition);
+			int inputRowPosition = retrieveRowPositionFromInput(currentPosition);
+			int startingPositionForRow = retrieveStartingPosition(inputRowPosition);
+			int endingPositionForRow = extractEndingPosition(inputRowPosition);
+			int startingPositionForCol = retrieveStartingPosition(inputColPosition);
+			int endingPositionForCol = extractEndingPosition(inputColPosition);
+			StringJoiner possibleMoves = new StringJoiner(",");
+			for (int i = startingPositionForRow; i <= endingPositionForRow; i++) {
+				for (int j = startingPositionForCol; j <= endingPositionForCol; j++) {
+					if (i == inputRowPosition && j == inputColPosition) {
+						continue;
+					}
+					possibleMoves.add(chessBoard[i][j]);
 				}
-				possibleMoves.add(chessBoard[i][j]);
 			}
-		}
 
-		return possibleMoves.toString();
+			return possibleMoves.toString();
+		} catch (ChessBoardException ex) {
+			throw ex;
+		}
 
 	}
 

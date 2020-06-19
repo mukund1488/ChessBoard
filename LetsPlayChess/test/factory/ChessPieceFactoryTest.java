@@ -11,7 +11,6 @@ import chessboard.Pawn;
 import chessboard.Queen;
 import chessboard.Rook;
 import exception.ChessBoardException;
-import factory.ChessPieceFactory;
 
 public class ChessPieceFactoryTest {
 
@@ -52,7 +51,7 @@ public class ChessPieceFactoryTest {
 	}
 
 	@Test
-	public void shouldReturnInstanceOfRookgWhenInputIsRook() {
+	public void shouldReturnInstanceOfRookWhenInputIsRook() {
 		try {
 			assertTrue(ChessPieceFactory.getChessPiece("Rook") instanceof Rook);
 		} catch (ChessBoardException e) {

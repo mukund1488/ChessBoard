@@ -3,6 +3,8 @@ package chessboard;
 import java.util.HashMap;
 import java.util.Map;
 
+import exception.ChessBoardException;
+
 /**
  * Parent class for all Chess Pieces Includes chessBoard array of 8*8 with rows
  * from A..H and cols from 1...8
@@ -39,17 +41,23 @@ public abstract class ChessPiece {
 	 * Returns number of moves available for a chess piece
 	 *
 	 * @param currentPosition
+	 * @throws ChessBoardException
 	 * @return
 	 */
-	public abstract String possibleMovesAvailable(String currentPosition);
+	public abstract String possibleMovesAvailable(String currentPosition) throws ChessBoardException;
 
 	/**
-	 * Returns the row position from first character of input
+	 * Returns the row position from first character of input Uses the row mapping
+	 * map to retrieve the row position corresponding to alphabets A-H
 	 *
 	 * @param input value such as D5,E6 etc
 	 * @return row position e.g. A is 1 , B is 2...H is 8
+	 * @throws ChessBoardException
 	 */
-	public int retrieveRowPositionFromInput(String input) {
+	public Integer retrieveRowPositionFromInput(String input) throws ChessBoardException {
+		if (input == null || !input.substring(0, 1).toLowerCase().matches("[a-h]")) {
+			throw new ChessBoardException("Please provide a valid row position between a-h");
+		}
 		String rowPosition = input.substring(0, 1);
 		return rowMappingMap.entrySet().stream().filter(entry -> entry.getValue().equals(rowPosition))
 				.map(Map.Entry::getKey).findFirst().get();
@@ -60,8 +68,12 @@ public abstract class ChessPiece {
 	 *
 	 * @param input value such as D5,E6 etc
 	 * @return column position
+	 * @throws ChessBoardException in case of invalid input
 	 */
-	public int retrieveColPositionFromInput(String input) {
+	public Integer retrieveColPositionFromInput(String input) throws ChessBoardException {
+		if (input == null || !input.substring(1).matches("[1-8]")) {
+			throw new ChessBoardException("Please provide a valid col position between 1-8");
+		}
 		return Integer.valueOf(input.substring(1)) - 1;
 	}
 
