@@ -15,8 +15,13 @@ import exception.ChessBoardException;
 public abstract class ChessPiece {
 
 	String[][] chessBoard = new String[8][8];
+
+	/**
+	 * Map to maintain the chars A..H to row position 0..8
+	 */
 	static Map<Integer, String> rowMappingMap;
 	static {
+
 		rowMappingMap = new HashMap<>();
 		rowMappingMap.put(0, "A");
 		rowMappingMap.put(1, "B");
@@ -32,7 +37,7 @@ public abstract class ChessPiece {
 		// populate the chessboard Array with a cell number
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				chessBoard[i][j] = ChessPiece.rowMappingMap.get(i) + (j + 1);
+				chessBoard[i][j] = rowMappingMap.get(i) + (j + 1);
 			}
 		}
 	}
@@ -41,8 +46,8 @@ public abstract class ChessPiece {
 	 * Returns number of moves available for a chess piece
 	 *
 	 * @param currentPosition
-	 * @throws ChessBoardException
-	 * @return
+	 * @throws ChessBoardException in case of invalid input
+	 * @return String of possible cell position separated by "," e.g A5,B5
 	 */
 	public abstract String possibleMovesAvailable(String currentPosition) throws ChessBoardException;
 
@@ -67,7 +72,7 @@ public abstract class ChessPiece {
 	 * Returns the column position from second character of input
 	 *
 	 * @param input value such as D5,E6 etc
-	 * @return column position
+	 * @return column position eg. 4 if input is D5, 3 if input is B4
 	 * @throws ChessBoardException in case of invalid input
 	 */
 	public Integer retrieveColPositionFromInput(String input) throws ChessBoardException {

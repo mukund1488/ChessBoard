@@ -14,9 +14,10 @@ public class King extends ChessPiece {
 
 			int startingPositionForRow = extractStartingPosition(inputRowPosition);
 			int endingPositionForRow = extractEndingPosition(inputRowPosition);
+
 			int startingPositionForCol = extractStartingPosition(inputColPosition);
 			int endingPositionForCol = extractEndingPosition(inputColPosition);
-			
+
 			StringJoiner possibleMoves = new StringJoiner(",");
 			for (int i = startingPositionForRow; i <= endingPositionForRow; i++) {
 				for (int j = startingPositionForCol; j <= endingPositionForCol; j++) {

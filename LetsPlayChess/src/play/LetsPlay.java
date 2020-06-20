@@ -16,6 +16,13 @@ import factory.ChessPieceFactory;
  */
 public class LetsPlay {
 
+	/**
+	 * API to calculate possible moves for input Chess piece and current position
+	 *
+	 * @param args input chess piece and position e.g King D5
+	 * @return String of possible cell position separated by "," e.g A5,B5
+	 * @throws ChessBoardException in case of invalid input
+	 */
 	public String letsPlay(String[] args) throws ChessBoardException {
 		try {
 			validateInput(args);
